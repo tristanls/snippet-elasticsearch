@@ -1,6 +1,6 @@
 {
   "name": "snippet-elasticsearch",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Elasticsearch snippet controller",
   "scripts": {
     "test": "node scripts/test.js"
