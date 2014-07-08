@@ -124,7 +124,7 @@ SnippetElasticsearch.prototype.listen = function listen(callback) {
         ['-Des.path.logs=' + self.path.logs,
          '-Des.path.data=' + self.path.data,
          '-Des.cluster.name=' + crypto.randomBytes(42).toString('base64'),
-         '-Ddiscovery.zen.ping.multicast.enabled=false',
+         '-Des.discovery.zen.ping.multicast.enabled=false',
          '-p ' + self.pidFile]);
 
     self.server.stdout.on('data', function (data) {
