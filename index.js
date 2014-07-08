@@ -74,7 +74,7 @@ var SnippetElasticsearch = module.exports = function SnippetElasticsearch(option
 
     // make sure we kill the child process if we exit
     self.onSIGINT = function () {
-        self.server.kill('SIGINT');
+        if (self.server) self.server.kill('SIGINT');
     };
     process.on('SIGINT', self.onSIGINT);
 };
@@ -106,7 +106,7 @@ SnippetElasticsearch.prototype.close = function close(callback) {
     self.server.on('close', function (code) {
         callback ? callback(code) : undefined;
     });
-    self.server.kill('SIGINT');
+    self.server ? self.server.kill('SIGINT') : undefined;
 };
 
 /*
