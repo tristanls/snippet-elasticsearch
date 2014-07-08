@@ -31,6 +31,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 "use strict";
 
+var crypto = require('crypto');
 var events = require('events');
 var fs = require('fs');
 var path = require('path');
@@ -122,6 +123,7 @@ SnippetElasticsearch.prototype.listen = function listen(callback) {
     self.server = spawn(self.executable,
         ['-Des.path.logs=' + self.path.logs,
          '-Des.path.data=' + self.path.data,
+         '-Des.cluster.name=' + crypto.randomBytes(42).toString('base64'),
          '-p ' + self.pidFile]);
 
     self.server.stdout.on('data', function (data) {
